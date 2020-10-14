@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yael Modal</title>
+    <style>
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      #btn {
+        padding: 1rem;
+      }
+
+      .modalBg {
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 90%;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 2s ease-in-out;
+      }
+
+      .modalWindow {
+        width: 300px;
+        height: 300px;
+        background-color: #ffffff;
+        border: 1px solid black;
+        border-radius: 5%;
+        padding: 1rem;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: calc(50% - 150px);
+        left: calc(50% - 150px);
+      }
+
+      #modalClose {
+        width: 100px;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <button id="btn">Click here</button>
+    </div>
+
+    <div class="modalBg" id="modalBg"></div>
+    <div class="modalWindow" id="modalWindow">
+      <h1>Modal Window</h1>
+      <h3>Content</h3>
+      <button id="modalClose">Close</button>
+    </div>
+  </body>
+
+  <script>
+    const btn = document.getElementById("btn");
+    const modalBg = document.getElementById("modalBg");
+    const modalWindow = document.getElementById("modalWindow");
+    const modalClose = document.getElementById("modalClose");
+
+    btn.addEventListener("click", (e) => {
+      console.log("Open button was pressed");
+      modalBg.style.display = "flex";
+      modalWindow.style.display = "flex"; 
+    });
+
+    modalClose.addEventListener("click", (e) => {
+      console.log("Close button was pressed");
+      modalBg.style.display = "none";
+      modalWindow.style.display = "none";
+    });
+  </script>
+
+</html>
