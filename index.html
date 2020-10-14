@@ -75,17 +75,26 @@
     const modalWindow = document.getElementById("modalWindow");
     const modalClose = document.getElementById("modalClose");
 
-    btn.addEventListener("click", (e) => {
+    const closeModal = () => {
+      modalBg.style.display = "none";
+      modalWindow.style.display = "none";
+    }
+
+    btn.addEventListener("click", () => {
       console.log("Open button was pressed");
       modalBg.style.display = "flex";
       modalWindow.style.display = "flex"; 
     });
 
-    modalClose.addEventListener("click", (e) => {
+    modalClose.addEventListener("click", () => {
       console.log("Close button was pressed");
-      modalBg.style.display = "none";
-      modalWindow.style.display = "none";
+      closeModal();
     });
+
+    modalBg.addEventListener("click", () => {
+      console.log("Background was clicked")
+      closeModal();
+    })
   </script>
 
 </html>
