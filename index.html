@@ -53,6 +53,27 @@
         width: 100px;
         padding: 1rem;
       }
+
+      @keyframes fadeInBG {
+        from {opacity: 0%;}
+        to {opacity: 90%;}
+      }
+      
+      @keyframes fadeInModal {
+        from {opacity: 0%;}
+        to {opacity: 100%;}
+      }
+
+      @keyframes fadeOutBG {
+        from {opacity: 90%;}
+        to {opacity: 0%;}
+      }
+      
+      @keyframes fadeOutModal {
+        from {opacity: 100%;}
+        to {opacity: 0%;}
+      }
+
     </style>
   </head>
 
@@ -76,14 +97,26 @@
     const modalClose = document.getElementById("modalClose");
 
     const closeModal = () => {
-      modalBg.style.display = "none";
-      modalWindow.style.display = "none";
+      modalBg.style.animationName = "fadeOutBg";
+      modalBg.style.animationDuration = ".1s";
+      setTimeout(() => {
+        modalBg.style.display = "none";
+      }, 101)
+      modalWindow.style.animationName = "fadeOutModal";
+      modalWindow.style.animationDuration = ".19s";
+      setTimeout(() => {
+        modalWindow.style.display = "none";
+      }, 185)
     }
 
     btn.addEventListener("click", () => {
       console.log("Open button was pressed");
       modalBg.style.display = "flex";
+      modalBg.style.animationName = "fadeInBG";
+      modalBg.style.animationDuration = ".2s";
       modalWindow.style.display = "flex"; 
+      modalWindow.style.animationName = "fadeInModal";
+      modalWindow.style.animationDuration = ".3s";
     });
 
     modalClose.addEventListener("click", () => {
@@ -96,5 +129,4 @@
       closeModal();
     })
   </script>
-
 </html>
